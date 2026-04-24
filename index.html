@@ -1,129 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raport GPW — aitomek</title>
     <style>
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 20px;
-        background: #0d1117;
-        color: #e6edf3;
-      }
-      h1 {
-        color: #58a6ff;
-        border-bottom: 1px solid #30363d;
-        padding-bottom: 12px;
-      }
-      h2 {
-        color: #58a6ff;
-        margin-top: 32px;
-      }
-      .meta {
-        color: #8b949e;
-        font-size: 14px;
-        margin-bottom: 32px;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 16px;
-      }
-      th {
-        background: #161b22;
-        padding: 10px 14px;
-        text-align: left;
-        border: 1px solid #30363d;
-        color: #58a6ff;
-      }
-      td {
-        padding: 10px 14px;
-        border: 1px solid #30363d;
-      }
-      tr:hover {
-        background: #161b22;
-      }
-      .badge {
-        display: inline-block;
-        padding: 3px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        background: #1f6feb;
-        color: white;
-      }
-      .footer {
-        margin-top: 48px;
-        color: #8b949e;
-        font-size: 13px;
-        border-top: 1px solid #30363d;
-        padding-top: 16px;
-      }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #0d1117;
+            color: #e6edf3;
+        }
+        h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 12px; }
+        h2 { color: #58a6ff; margin-top: 32px; }
+        .meta { color: #8b949e; font-size: 14px; margin-bottom: 32px; }
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            background: #1f6feb;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+        th {
+            background: #161b22;
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+        }
+        td {
+            padding: 10px 14px;
+            border: 1px solid #30363d;
+        }
+        tr:hover { background: #161b22; }
+        .footer {
+            margin-top: 48px;
+            color: #8b949e;
+            font-size: 13px;
+            border-top: 1px solid #30363d;
+            padding-top: 16px;
+        }
     </style>
-  </head>
-  <body>
-    <h1>📊 Raport Analizy Portfela GPW</h1>
-    <p class="meta">
-      Dane za ostatnie 3 miesiące · Aktualizacja: <span id="data"></span> ·
-      <span class="badge">automatyczny</span>
-    </p>
+</head>
+<body>
 
-    <h2>Portfel spółek</h2>
-    <table>
-      <tr>
+<h1>📊 Raport Analizy Portfela GPW</h1>
+<p class="meta">
+    Dane: 24.01.2026 – 24.04.2026 · 
+    Aktualizacja: 24.04.2026 · 
+    <span class="badge">automatyczny</span>
+</p>
+
+<h2>Statystyki portfela</h2>
+<table>
+    <tr>
         <th>Spółka</th>
-        <th>Ticker</th>
-        <th>Giełda</th>
-      </tr>
-      <tr>
-        <td>PKO BP</td>
-        <td>PKO.WA</td>
-        <td>GPW Warszawa</td>
-      </tr>
-      <tr>
-        <td>CD Projekt</td>
-        <td>CDR.WA</td>
-        <td>GPW Warszawa</td>
-      </tr>
-      <tr>
-        <td>ORLEN</td>
-        <td>PKN.WA</td>
-        <td>GPW Warszawa</td>
-      </tr>
-      <tr>
-        <td>Allegro</td>
-        <td>ALE.WA</td>
-        <td>GPW Warszawa</td>
-      </tr>
-      <tr>
-        <td>Dino</td>
-        <td>DNP.WA</td>
-        <td>GPW Warszawa</td>
-      </tr>
-    </table>
+        <th>Cena pocz.</th>
+        <th>Cena końc.</th>
+        <th>Zmiana %</th>
+        <th>Min (3M)</th>
+        <th>Max (3M)</th>
+        <th>Średnia (3M)</th>
+    </tr>
+    
+        <tr>
+            <td>PKO BP</td>
+            <td>90.60 zł</td>
+            <td>96.71 zł</td>
+            <td style="color:#3fb950; font-weight:bold">+6.74%</td>
+            <td>84.60 zł</td>
+            <td>102.00 zł</td>
+            <td>91.52 zł</td>
+        </tr>
+        <tr>
+            <td>CD Projekt</td>
+            <td>266.40 zł</td>
+            <td>283.70 zł</td>
+            <td style="color:#3fb950; font-weight:bold">+6.49%</td>
+            <td>231.80 zł</td>
+            <td>293.10 zł</td>
+            <td>250.87 zł</td>
+        </tr>
+        <tr>
+            <td>ORLEN</td>
+            <td>102.74 zł</td>
+            <td>128.54 zł</td>
+            <td style="color:#3fb950; font-weight:bold">+25.11%</td>
+            <td>102.74 zł</td>
+            <td>136.04 zł</td>
+            <td>120.77 zł</td>
+        </tr>
+        <tr>
+            <td>Allegro</td>
+            <td>29.94 zł</td>
+            <td>30.01 zł</td>
+            <td style="color:#3fb950; font-weight:bold">+0.23%</td>
+            <td>25.73 zł</td>
+            <td>30.68 zł</td>
+            <td>28.14 zł</td>
+        </tr>
+        <tr>
+            <td>Dino</td>
+            <td>38.90 zł</td>
+            <td>33.26 zł</td>
+            <td style="color:#f85149; font-weight:bold">-14.50%</td>
+            <td>32.77 zł</td>
+            <td>41.46 zł</td>
+            <td>38.03 zł</td>
+        </tr>
+</table>
 
-    <h2>Jak używać</h2>
-    <p>
-      Pełny raport z danymi historycznymi, statystykami i wykresem jest dostępny
-      jako plik Excel.
-    </p>
-    <p>
-      Raport generowany automatycznie co poniedziałek o 10:00 przez GitHub
-      Actions.
-    </p>
+<div class="footer">
+    Źródło danych: Yahoo Finance · 
+    Kod: <a href="https://github.com/aitomek01/raport-gpw" style="color:#58a6ff">
+    github.com/aitomek01/raport-gpw</a>
+</div>
 
-    <div class="footer">
-      Źródło danych: Yahoo Finance · Kod:
-      <a href="https://github.com/aitomek01/raport-gpw" style="color: #58a6ff"
-        >github.com/aitomek01/raport-gpw</a
-      >
-    </div>
-
-    <script>
-      document.getElementById("data").textContent =
-        new Date().toLocaleDateString("pl-PL");
-    </script>
-  </body>
+</body>
 </html>

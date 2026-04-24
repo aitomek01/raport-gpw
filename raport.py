@@ -201,6 +201,116 @@ ws.add_chart(wykres, "A13")
 
 wb.save(nazwa_pliku)
 
+# — MODUŁ X — Generowanie strony HTML —————————————————
+
+def generuj_html(statystyki, poczatek, koniec):
+    
+    wiersze = ""
+    for spolka, row in statystyki.iterrows():
+        zmiana = row["Zmiana %"]
+        kolor = "#3fb950" if zmiana >= 0 else "#f85149"  # zielony / czerwony
+        znak = "+" if zmiana >= 0 else ""
+        wiersze += f"""
+        <tr>
+            <td>{spolka}</td>
+            <td>{row['Cena początkowa']:.2f} zł</td>
+            <td>{row['Cena końcowa']:.2f} zł</td>
+            <td style="color:{kolor}; font-weight:bold">{znak}{zmiana:.2f}%</td>
+            <td>{row['Min (3M)']:.2f} zł</td>
+            <td>{row['Max (3M)']:.2f} zł</td>
+            <td>{row['Średnia (3M)']:.2f} zł</td>
+        </tr>"""
+
+    html = f"""<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raport GPW — aitomek</title>
+    <style>
+        body {{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #0d1117;
+            color: #e6edf3;
+        }}
+        h1 {{ color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 12px; }}
+        h2 {{ color: #58a6ff; margin-top: 32px; }}
+        .meta {{ color: #8b949e; font-size: 14px; margin-bottom: 32px; }}
+        .badge {{
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            background: #1f6feb;
+            color: white;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }}
+        th {{
+            background: #161b22;
+            padding: 10px 14px;
+            text-align: left;
+            border: 1px solid #30363d;
+            color: #58a6ff;
+        }}
+        td {{
+            padding: 10px 14px;
+            border: 1px solid #30363d;
+        }}
+        tr:hover {{ background: #161b22; }}
+        .footer {{
+            margin-top: 48px;
+            color: #8b949e;
+            font-size: 13px;
+            border-top: 1px solid #30363d;
+            padding-top: 16px;
+        }}
+    </style>
+</head>
+<body>
+
+<h1>📊 Raport Analizy Portfela GPW</h1>
+<p class="meta">
+    Dane: {poczatek.strftime('%d.%m.%Y')} – {koniec.strftime('%d.%m.%Y')} · 
+    Aktualizacja: {koniec.strftime('%d.%m.%Y')} · 
+    <span class="badge">automatyczny</span>
+</p>
+
+<h2>Statystyki portfela</h2>
+<table>
+    <tr>
+        <th>Spółka</th>
+        <th>Cena pocz.</th>
+        <th>Cena końc.</th>
+        <th>Zmiana %</th>
+        <th>Min (3M)</th>
+        <th>Max (3M)</th>
+        <th>Średnia (3M)</th>
+    </tr>
+    {wiersze}
+</table>
+
+<div class="footer">
+    Źródło danych: Yahoo Finance · 
+    Kod: <a href="https://github.com/aitomek01/raport-gpw" style="color:#58a6ff">
+    github.com/aitomek01/raport-gpw</a>
+</div>
+
+</body>
+</html>"""
+
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(html)
+    print("✅ Wygenerowano index.html")
+
+generuj_html(statystyki, poczatek, koniec)
+
 # ── Usuń siatkę z wykresu (patch XML) ────────────────────────
 import zipfile, os
 
