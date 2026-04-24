@@ -1,0 +1,31 @@
+name: Tygodniowy Raport GPW
+
+on:
+  schedule:
+    - cron: "0 8 * * 1" # co poniedziałek o 8:00 UTC
+  workflow_dispatch: # możliwość ręcznego uruchomienia
+
+jobs:
+  generuj-raport:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pobierz kod z repo
+        uses: actions/checkout@v4
+
+      - name: Skonfiguruj Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Zainstaluj zależności
+        run: pip install -r requirements.txt
+
+      - name: Uruchom skrypt
+        run: python raport.py
+
+      - name: Zapisz raport Excel jako artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: raport-gpw-${{ github.run_number }}
+          path: raport_gpw.xlsx
